@@ -1,0 +1,52 @@
+schema_version: 1
+
+context:
+  name: pyairports
+  version: 2.1.1
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/ozeliger/pyairports/archive/f611ee5a5a82b4e98b22641bb99693d862c802e4.tar.gz
+  sha256: 83bd3f89e8a6d5a32cf32d453a745c2f999f5ae8a19ecf8c742d4471ca375063
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - pyairports=pyairports.airports:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - pyairports
+      python_version: ${{ python_min }}.*
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - pip check
+      - pyairports --help
+
+about:
+  summary: Airport and other locations database
+  license: Apache-2.0
+  license_file: LICENSE.txt
+  homepage: https://github.com/ozeliger/pyairports
+
+extra:
+  recipe-maintainers:
+    - pavelzw
