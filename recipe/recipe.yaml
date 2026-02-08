@@ -9,8 +9,8 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyairports-${{ version }}.tar.gz
-  sha256: 3d60a727fce4da81b9c6393ea8ae0b33d67b37ece344dffc863f749e3ad62bcd
+  url: https://github.com/ozeliger/pyairports/archive/f611ee5a5a82b4e98b22641bb99693d862c802e4.tar.gz
+  sha256: 83bd3f89e8a6d5a32cf32d453a745c2f999f5ae8a19ecf8c742d4471ca375063
 
 build:
   number: 2
